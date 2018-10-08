@@ -1,0 +1,15 @@
+<a href="<%= posts_path %>" class="btn"><i class="material-icons left">arrow_back</i>Revenir aux articles</a>
+
+<% if notice %>
+  <div class="card green lighten-1">
+    <div class="card-content white-text">
+      <%= notice %>
+    </div>
+  </div>
+<% end %>
+
+<h1><%= @post.name %></h1>
+
+<p><%= @post.content %></p>
+
+<p>Le <%= @post.created_at.strftime('%d/%m/%Y à %H:%M') %></p>

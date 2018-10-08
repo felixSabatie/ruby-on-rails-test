@@ -1,0 +1,23 @@
+
+<% if post.errors.any? %>
+  <div class="card red darken-1">
+    <div class="card-content white-text">
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for(post) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_area :content, class: 'materialize-textarea'%>
+  <select name="post[category_id]" class="browser-default" style="margin-bottom: 10px;">
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>" <%= category.id == post.category_id ? 'selected' : nil%>><%= category.name %></option>
+    <% end %>
+  </select>
+  <button class="btn"><%= post.new_record? ? 'Créer' : 'Modifier' %></button>
+<% end %>
